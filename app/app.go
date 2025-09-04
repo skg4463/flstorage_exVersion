@@ -47,6 +47,7 @@ import (
 
 	"flstorage/docs"
 	flstoragemodulekeeper "flstorage/x/flstorage/keeper"
+	storagemodulekeeper "flstorage/x/storage/keeper"
 )
 
 const (
@@ -99,6 +100,7 @@ type App struct {
 	TransferKeeper      ibctransferkeeper.Keeper
 
 	FlstorageKeeper flstoragemodulekeeper.Keeper
+	StorageKeeper   storagemodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// simulation manager
@@ -179,6 +181,7 @@ func New(
 		&app.CircuitBreakerKeeper,
 		&app.ParamsKeeper,
 		&app.FlstorageKeeper,
+		&app.StorageKeeper,
 	); err != nil {
 		panic(err)
 	}

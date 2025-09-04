@@ -3,6 +3,8 @@ package app
 import (
 	_ "flstorage/x/flstorage/module"
 	flstoragemoduletypes "flstorage/x/flstorage/types"
+	_ "flstorage/x/storage/module"
+	storagemoduletypes "flstorage/x/storage/types"
 	"time"
 
 	runtimev1alpha1 "cosmossdk.io/api/cosmos/app/runtime/v1alpha1"
@@ -83,6 +85,7 @@ var (
 		{Account: nft.ModuleName},
 		{Account: ibctransfertypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner}},
 		{Account: icatypes.ModuleName},
+		{Account: storagemoduletypes.ModuleName, Permissions: []string{authtypes.Minter, authtypes.Burner, authtypes.Staking}},
 		// this line is used by starport scaffolding # stargate/app/maccPerms
 	}
 
@@ -127,6 +130,7 @@ var (
 						ibcexported.ModuleName,
 						// chain modules
 						flstoragemoduletypes.ModuleName,
+						storagemoduletypes.ModuleName,
 						// this line is used by starport scaffolding # stargate/app/beginBlockers
 					},
 					EndBlockers: []string{
@@ -136,6 +140,7 @@ var (
 						group.ModuleName,
 						// chain modules
 						flstoragemoduletypes.ModuleName,
+						storagemoduletypes.ModuleName,
 						// this line is used by starport scaffolding # stargate/app/endBlockers
 					},
 					// The following is mostly only needed when ModuleName != StoreKey name.
@@ -173,6 +178,7 @@ var (
 						icatypes.ModuleName,
 						// chain modules
 						flstoragemoduletypes.ModuleName,
+						storagemoduletypes.ModuleName,
 						// this line is used by starport scaffolding # stargate/app/initGenesis
 					},
 				}),
@@ -272,6 +278,10 @@ var (
 			{
 				Name:   flstoragemoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&flstoragemoduletypes.Module{}),
+			},
+			{
+				Name:   storagemoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&storagemoduletypes.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},
