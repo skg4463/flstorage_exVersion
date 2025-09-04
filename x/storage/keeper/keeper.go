@@ -23,6 +23,7 @@ type Keeper struct {
 	Params collections.Item[types.Params]
 
 	bankKeeper types.BankKeeper
+	StoredFile collections.Map[string, types.StoredFile]
 }
 
 func NewKeeper(
@@ -47,7 +48,7 @@ func NewKeeper(
 
 		bankKeeper: bankKeeper,
 		Params:     collections.NewItem(sb, types.ParamsKey, "params", codec.CollValue[types.Params](cdc)),
-	}
+		StoredFile: collections.NewMap(sb, types.StoredFileKey, "storedFile", collections.StringKey, codec.CollValue[types.StoredFile](cdc))}
 
 	schema, err := sb.Build()
 	if err != nil {

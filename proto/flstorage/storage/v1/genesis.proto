@@ -1,8 +1,10 @@
 syntax = "proto3";
+
 package flstorage.storage.v1;
 
 import "amino/amino.proto";
 import "flstorage/storage/v1/params.proto";
+import "flstorage/storage/v1/stored_file.proto";
 import "gogoproto/gogo.proto";
 
 option go_package = "flstorage/x/storage/types";
@@ -14,4 +16,5 @@ message GenesisState {
     (gogoproto.nullable) = false,
     (amino.dont_omitempty) = true
   ];
+  repeated StoredFile stored_file_map = 2 [(gogoproto.nullable) = false];
 }

@@ -10,7 +10,7 @@ import (
 	math "math"
 	math_bits "math/bits"
 
-	_ "github.com/cosmos/cosmos-sdk/types/query"
+	query "github.com/cosmos/cosmos-sdk/types/query"
 	_ "github.com/cosmos/cosmos-sdk/types/tx/amino"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	grpc1 "github.com/cosmos/gogoproto/grpc"
@@ -115,34 +115,240 @@ func (m *QueryParamsResponse) GetParams() Params {
 	return Params{}
 }
 
+// QueryGetStoredFileRequest defines the QueryGetStoredFileRequest message.
+type QueryGetStoredFileRequest struct {
+	OriginalHash string `protobuf:"bytes,1,opt,name=original_hash,json=originalHash,proto3" json:"original_hash,omitempty"`
+}
+
+func (m *QueryGetStoredFileRequest) Reset()         { *m = QueryGetStoredFileRequest{} }
+func (m *QueryGetStoredFileRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetStoredFileRequest) ProtoMessage()    {}
+func (*QueryGetStoredFileRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_124daa535e736555, []int{2}
+}
+func (m *QueryGetStoredFileRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetStoredFileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetStoredFileRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetStoredFileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetStoredFileRequest.Merge(m, src)
+}
+func (m *QueryGetStoredFileRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetStoredFileRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetStoredFileRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetStoredFileRequest proto.InternalMessageInfo
+
+func (m *QueryGetStoredFileRequest) GetOriginalHash() string {
+	if m != nil {
+		return m.OriginalHash
+	}
+	return ""
+}
+
+// QueryGetStoredFileResponse defines the QueryGetStoredFileResponse message.
+type QueryGetStoredFileResponse struct {
+	StoredFile StoredFile `protobuf:"bytes,1,opt,name=stored_file,json=storedFile,proto3" json:"stored_file"`
+}
+
+func (m *QueryGetStoredFileResponse) Reset()         { *m = QueryGetStoredFileResponse{} }
+func (m *QueryGetStoredFileResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetStoredFileResponse) ProtoMessage()    {}
+func (*QueryGetStoredFileResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_124daa535e736555, []int{3}
+}
+func (m *QueryGetStoredFileResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetStoredFileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetStoredFileResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetStoredFileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetStoredFileResponse.Merge(m, src)
+}
+func (m *QueryGetStoredFileResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetStoredFileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetStoredFileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetStoredFileResponse proto.InternalMessageInfo
+
+func (m *QueryGetStoredFileResponse) GetStoredFile() StoredFile {
+	if m != nil {
+		return m.StoredFile
+	}
+	return StoredFile{}
+}
+
+// QueryAllStoredFileRequest defines the QueryAllStoredFileRequest message.
+type QueryAllStoredFileRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllStoredFileRequest) Reset()         { *m = QueryAllStoredFileRequest{} }
+func (m *QueryAllStoredFileRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllStoredFileRequest) ProtoMessage()    {}
+func (*QueryAllStoredFileRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_124daa535e736555, []int{4}
+}
+func (m *QueryAllStoredFileRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllStoredFileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllStoredFileRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllStoredFileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllStoredFileRequest.Merge(m, src)
+}
+func (m *QueryAllStoredFileRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllStoredFileRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllStoredFileRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllStoredFileRequest proto.InternalMessageInfo
+
+func (m *QueryAllStoredFileRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+// QueryAllStoredFileResponse defines the QueryAllStoredFileResponse message.
+type QueryAllStoredFileResponse struct {
+	StoredFile []StoredFile        `protobuf:"bytes,1,rep,name=stored_file,json=storedFile,proto3" json:"stored_file"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllStoredFileResponse) Reset()         { *m = QueryAllStoredFileResponse{} }
+func (m *QueryAllStoredFileResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllStoredFileResponse) ProtoMessage()    {}
+func (*QueryAllStoredFileResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_124daa535e736555, []int{5}
+}
+func (m *QueryAllStoredFileResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllStoredFileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllStoredFileResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllStoredFileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllStoredFileResponse.Merge(m, src)
+}
+func (m *QueryAllStoredFileResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllStoredFileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllStoredFileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllStoredFileResponse proto.InternalMessageInfo
+
+func (m *QueryAllStoredFileResponse) GetStoredFile() []StoredFile {
+	if m != nil {
+		return m.StoredFile
+	}
+	return nil
+}
+
+func (m *QueryAllStoredFileResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "flstorage.storage.v1.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "flstorage.storage.v1.QueryParamsResponse")
+	proto.RegisterType((*QueryGetStoredFileRequest)(nil), "flstorage.storage.v1.QueryGetStoredFileRequest")
+	proto.RegisterType((*QueryGetStoredFileResponse)(nil), "flstorage.storage.v1.QueryGetStoredFileResponse")
+	proto.RegisterType((*QueryAllStoredFileRequest)(nil), "flstorage.storage.v1.QueryAllStoredFileRequest")
+	proto.RegisterType((*QueryAllStoredFileResponse)(nil), "flstorage.storage.v1.QueryAllStoredFileResponse")
 }
 
 func init() { proto.RegisterFile("flstorage/storage/v1/query.proto", fileDescriptor_124daa535e736555) }
 
 var fileDescriptor_124daa535e736555 = []byte{
-	// 302 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x48, 0xcb, 0x29, 0x2e,
-	0xc9, 0x2f, 0x4a, 0x4c, 0x4f, 0xd5, 0x87, 0xd1, 0x65, 0x86, 0xfa, 0x85, 0xa5, 0xa9, 0x45, 0x95,
-	0x7a, 0x05, 0x45, 0xf9, 0x25, 0xf9, 0x42, 0x22, 0x70, 0x15, 0x7a, 0x30, 0xba, 0xcc, 0x50, 0x4a,
-	0x30, 0x31, 0x37, 0x33, 0x2f, 0x5f, 0x1f, 0x4c, 0x42, 0x14, 0x4a, 0x89, 0xa4, 0xe7, 0xa7, 0xe7,
-	0x83, 0x99, 0xfa, 0x20, 0x16, 0x54, 0x54, 0x26, 0x3d, 0x3f, 0x3f, 0x3d, 0x27, 0x55, 0x3f, 0xb1,
-	0x20, 0x53, 0x3f, 0x31, 0x2f, 0x2f, 0xbf, 0x24, 0xb1, 0x24, 0x33, 0x3f, 0xaf, 0x18, 0x2a, 0xab,
-	0x95, 0x9c, 0x5f, 0x9c, 0x9b, 0x5f, 0xac, 0x9f, 0x94, 0x58, 0x9c, 0x0a, 0xb1, 0x55, 0xbf, 0xcc,
-	0x30, 0x29, 0xb5, 0x24, 0xd1, 0x50, 0xbf, 0x20, 0x31, 0x3d, 0x33, 0x0f, 0xac, 0x18, 0xaa, 0x56,
-	0x11, 0xab, 0x53, 0x0b, 0x12, 0x8b, 0x12, 0x73, 0xa1, 0xc6, 0x29, 0x89, 0x70, 0x09, 0x05, 0x82,
-	0x0c, 0x09, 0x00, 0x0b, 0x06, 0xa5, 0x16, 0x96, 0xa6, 0x16, 0x97, 0x28, 0x85, 0x71, 0x09, 0xa3,
-	0x88, 0x16, 0x17, 0xe4, 0xe7, 0x15, 0xa7, 0x0a, 0xd9, 0x73, 0xb1, 0x41, 0x34, 0x4b, 0x30, 0x2a,
-	0x30, 0x6a, 0x70, 0x1b, 0xc9, 0xe8, 0x61, 0xf3, 0xa9, 0x1e, 0x44, 0x97, 0x13, 0xe7, 0x89, 0x7b,
-	0xf2, 0x0c, 0x2b, 0x9e, 0x6f, 0xd0, 0x62, 0x0c, 0x82, 0x6a, 0x33, 0xea, 0x65, 0xe4, 0x62, 0x05,
-	0x1b, 0x2c, 0xd4, 0xcc, 0xc8, 0xc5, 0x06, 0x51, 0x27, 0xa4, 0x81, 0xdd, 0x14, 0x4c, 0x67, 0x49,
-	0x69, 0x12, 0xa1, 0x12, 0xe2, 0x54, 0x25, 0x95, 0xa6, 0xcb, 0x4f, 0x26, 0x33, 0xc9, 0x09, 0xc9,
-	0xe8, 0xe3, 0x09, 0x03, 0x27, 0xe3, 0x13, 0x8f, 0xe4, 0x18, 0x2f, 0x3c, 0x92, 0x63, 0x7c, 0xf0,
-	0x48, 0x8e, 0x71, 0xc2, 0x63, 0x39, 0x86, 0x0b, 0x8f, 0xe5, 0x18, 0x6e, 0x3c, 0x96, 0x63, 0x88,
-	0x92, 0x44, 0x68, 0xab, 0x80, 0x6b, 0x2c, 0xa9, 0x2c, 0x48, 0x2d, 0x4e, 0x62, 0x03, 0x87, 0x9c,
-	0x31, 0x20, 0x00, 0x00, 0xff, 0xff, 0x45, 0x90, 0xfc, 0x59, 0x09, 0x02, 0x00, 0x00,
+	// 520 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x31, 0x6f, 0x13, 0x31,
+	0x14, 0xc7, 0xe3, 0x16, 0x22, 0xd5, 0xa5, 0x48, 0x98, 0x0c, 0xf4, 0x14, 0x1d, 0xe9, 0x15, 0x95,
+	0xb6, 0xc3, 0x99, 0x6b, 0x26, 0x26, 0x20, 0x43, 0xc3, 0xc0, 0x50, 0x0e, 0x89, 0x81, 0xa5, 0x72,
+	0x8a, 0x7b, 0xb1, 0x74, 0x39, 0x5f, 0xcf, 0x6e, 0x44, 0x85, 0x58, 0xe0, 0x0b, 0x20, 0xb1, 0x33,
+	0xb3, 0x80, 0xf8, 0x18, 0x1d, 0x2b, 0xb1, 0x30, 0x55, 0x28, 0x41, 0xe2, 0x6b, 0xa0, 0xb3, 0x7d,
+	0x49, 0x8e, 0x98, 0x24, 0xea, 0x92, 0xb3, 0x9e, 0xde, 0xff, 0xfd, 0x7f, 0xcf, 0xef, 0x39, 0xb0,
+	0x71, 0x1c, 0x0b, 0xc9, 0x33, 0x12, 0x51, 0x5c, 0x7c, 0xfb, 0x01, 0x3e, 0x39, 0xa5, 0xd9, 0x99,
+	0x9f, 0x66, 0x5c, 0x72, 0x54, 0x1b, 0x65, 0xf8, 0xc5, 0xb7, 0x1f, 0x38, 0xb7, 0x48, 0x8f, 0x25,
+	0x1c, 0xab, 0x5f, 0x9d, 0xe8, 0xec, 0x1e, 0x71, 0xd1, 0xe3, 0x02, 0x77, 0x88, 0xa0, 0xba, 0x02,
+	0xee, 0x07, 0x1d, 0x2a, 0x49, 0x80, 0x53, 0x12, 0xb1, 0x84, 0x48, 0xc6, 0x13, 0x93, 0xbb, 0x61,
+	0xb5, 0x4d, 0x49, 0x46, 0x7a, 0xc2, 0xa4, 0xd4, 0x22, 0x1e, 0x71, 0x75, 0xc4, 0xf9, 0xc9, 0x44,
+	0xeb, 0x11, 0xe7, 0x51, 0x4c, 0x31, 0x49, 0x19, 0x26, 0x49, 0xc2, 0xa5, 0xaa, 0x5a, 0x68, 0xb6,
+	0xac, 0x65, 0xf3, 0x23, 0x7d, 0x7d, 0x78, 0xcc, 0x62, 0xaa, 0xf3, 0xbc, 0x1a, 0x44, 0xcf, 0x73,
+	0xc0, 0x03, 0x65, 0x18, 0xd2, 0x93, 0x53, 0x2a, 0xa4, 0xf7, 0x12, 0xde, 0x2e, 0x45, 0x45, 0xca,
+	0x13, 0x41, 0xd1, 0x23, 0x58, 0xd5, 0x60, 0x77, 0x40, 0x03, 0x6c, 0xaf, 0xee, 0xd5, 0x7d, 0xdb,
+	0x8d, 0xf8, 0x5a, 0xd5, 0x5a, 0x39, 0xbf, 0xbc, 0x5b, 0xf9, 0xf2, 0xe7, 0xfb, 0x2e, 0x08, 0x8d,
+	0xcc, 0x7b, 0x0c, 0xd7, 0x55, 0xdd, 0x36, 0x95, 0x2f, 0x14, 0xca, 0x3e, 0x8b, 0xa9, 0x31, 0x45,
+	0x9b, 0x70, 0x8d, 0x67, 0x2c, 0xbf, 0x9e, 0xf8, 0xb0, 0x4b, 0x44, 0x57, 0x99, 0xac, 0x84, 0x37,
+	0x8a, 0xe0, 0x53, 0x22, 0xba, 0x1e, 0x85, 0x8e, 0xad, 0x82, 0x01, 0x6c, 0xc3, 0xd5, 0x89, 0x16,
+	0x0d, 0x65, 0xc3, 0x4e, 0x39, 0x96, 0xb7, 0xae, 0xe5, 0xa4, 0x21, 0x14, 0xa3, 0x88, 0x77, 0x64,
+	0x40, 0x9f, 0xc4, 0xf1, 0x34, 0xe8, 0x3e, 0x84, 0xe3, 0x31, 0x1a, 0x93, 0x2d, 0x5f, 0xcf, 0xdc,
+	0xcf, 0x67, 0xee, 0xeb, 0xad, 0x31, 0x33, 0xf7, 0x0f, 0x48, 0x54, 0x68, 0xc3, 0x09, 0xa5, 0xf7,
+	0x0d, 0x98, 0x66, 0xfe, 0x71, 0xf9, 0x5f, 0x33, 0xcb, 0x57, 0x6b, 0x06, 0xb5, 0x4b, 0xbc, 0x4b,
+	0x8a, 0xf7, 0xfe, 0x5c, 0x5e, 0x4d, 0x31, 0x09, 0xbc, 0x77, 0xb9, 0x0c, 0xaf, 0x2b, 0x60, 0xf4,
+	0x01, 0xc0, 0xaa, 0x1e, 0x33, 0xda, 0xb6, 0x13, 0x4d, 0x6f, 0x95, 0xb3, 0xb3, 0x40, 0xa6, 0x76,
+	0xf5, 0xee, 0xbd, 0xff, 0xf1, 0xfb, 0xd3, 0x92, 0x8b, 0xea, 0x78, 0xc6, 0xf3, 0x40, 0x5f, 0x01,
+	0x5c, 0x2b, 0x2d, 0x02, 0xc2, 0x33, 0x2c, 0x6c, 0x4b, 0xe7, 0x3c, 0x58, 0x5c, 0x60, 0xd0, 0x1e,
+	0x2a, 0xb4, 0x26, 0x0a, 0xf0, 0xbc, 0x27, 0x86, 0xdf, 0x96, 0xf6, 0xf9, 0x1d, 0xfa, 0x0c, 0xe0,
+	0xcd, 0x67, 0x4c, 0x2c, 0x0a, 0x6c, 0x5b, 0xbe, 0x99, 0xc0, 0xd6, 0x3d, 0xf2, 0x76, 0x14, 0xf0,
+	0x26, 0xda, 0x98, 0x0b, 0xdc, 0x6a, 0x9e, 0x0f, 0x5c, 0x70, 0x31, 0x70, 0xc1, 0xaf, 0x81, 0x0b,
+	0x3e, 0x0e, 0xdd, 0xca, 0xc5, 0xd0, 0xad, 0xfc, 0x1c, 0xba, 0x95, 0x57, 0xeb, 0x63, 0xed, 0x9b,
+	0x91, 0x5a, 0x9e, 0xa5, 0x54, 0x74, 0xaa, 0xea, 0x9f, 0xa4, 0xf9, 0x37, 0x00, 0x00, 0xff, 0xff,
+	0xae, 0xa5, 0x42, 0x96, 0x41, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -159,6 +365,10 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// ListStoredFile Queries a list of StoredFile items.
+	GetStoredFile(ctx context.Context, in *QueryGetStoredFileRequest, opts ...grpc.CallOption) (*QueryGetStoredFileResponse, error)
+	// ListStoredFile defines the ListStoredFile RPC.
+	ListStoredFile(ctx context.Context, in *QueryAllStoredFileRequest, opts ...grpc.CallOption) (*QueryAllStoredFileResponse, error)
 }
 
 type queryClient struct {
@@ -178,10 +388,32 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) GetStoredFile(ctx context.Context, in *QueryGetStoredFileRequest, opts ...grpc.CallOption) (*QueryGetStoredFileResponse, error) {
+	out := new(QueryGetStoredFileResponse)
+	err := c.cc.Invoke(ctx, "/flstorage.storage.v1.Query/GetStoredFile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) ListStoredFile(ctx context.Context, in *QueryAllStoredFileRequest, opts ...grpc.CallOption) (*QueryAllStoredFileResponse, error) {
+	out := new(QueryAllStoredFileResponse)
+	err := c.cc.Invoke(ctx, "/flstorage.storage.v1.Query/ListStoredFile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// ListStoredFile Queries a list of StoredFile items.
+	GetStoredFile(context.Context, *QueryGetStoredFileRequest) (*QueryGetStoredFileResponse, error)
+	// ListStoredFile defines the ListStoredFile RPC.
+	ListStoredFile(context.Context, *QueryAllStoredFileRequest) (*QueryAllStoredFileResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -190,6 +422,12 @@ type UnimplementedQueryServer struct {
 
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (*UnimplementedQueryServer) GetStoredFile(ctx context.Context, req *QueryGetStoredFileRequest) (*QueryGetStoredFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStoredFile not implemented")
+}
+func (*UnimplementedQueryServer) ListStoredFile(ctx context.Context, req *QueryAllStoredFileRequest) (*QueryAllStoredFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListStoredFile not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -214,6 +452,42 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_GetStoredFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetStoredFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GetStoredFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flstorage.storage.v1.Query/GetStoredFile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GetStoredFile(ctx, req.(*QueryGetStoredFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_ListStoredFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllStoredFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).ListStoredFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flstorage.storage.v1.Query/ListStoredFile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).ListStoredFile(ctx, req.(*QueryAllStoredFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var Query_serviceDesc = _Query_serviceDesc
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "flstorage.storage.v1.Query",
@@ -222,6 +496,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "GetStoredFile",
+			Handler:    _Query_GetStoredFile_Handler,
+		},
+		{
+			MethodName: "ListStoredFile",
+			Handler:    _Query_ListStoredFile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -284,6 +566,153 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetStoredFileRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetStoredFileRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetStoredFileRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.OriginalHash) > 0 {
+		i -= len(m.OriginalHash)
+		copy(dAtA[i:], m.OriginalHash)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.OriginalHash)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetStoredFileResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetStoredFileResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetStoredFileResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.StoredFile.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllStoredFileRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllStoredFileRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllStoredFileRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllStoredFileResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllStoredFileResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllStoredFileResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.StoredFile) > 0 {
+		for iNdEx := len(m.StoredFile) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.StoredFile[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -312,6 +741,62 @@ func (m *QueryParamsResponse) Size() (n int) {
 	_ = l
 	l = m.Params.Size()
 	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryGetStoredFileRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.OriginalHash)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetStoredFileResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.StoredFile.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllStoredFileRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllStoredFileResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.StoredFile) > 0 {
+		for _, e := range m.StoredFile {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
 	return n
 }
 
@@ -430,6 +915,377 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if err := m.Params.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetStoredFileRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetStoredFileRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetStoredFileRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field OriginalHash", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.OriginalHash = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetStoredFileResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetStoredFileResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetStoredFileResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field StoredFile", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.StoredFile.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllStoredFileRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllStoredFileRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllStoredFileRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllStoredFileResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllStoredFileResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllStoredFileResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field StoredFile", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.StoredFile = append(m.StoredFile, StoredFile{})
+			if err := m.StoredFile[len(m.StoredFile)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

@@ -36,8 +36,6 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type MsgUpdateParams struct {
 	// authority is the address that controls the module (defaults to x/gov unless overwritten).
 	Authority string `protobuf:"bytes,1,opt,name=authority,proto3" json:"authority,omitempty"`
-	// params defines the module parameters to update.
-	//
 	// NOTE: All parameters must be supplied.
 	Params Params `protobuf:"bytes,2,opt,name=params,proto3" json:"params"`
 }
@@ -127,36 +125,356 @@ func (m *MsgUpdateParamsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgUpdateParamsResponse proto.InternalMessageInfo
 
+// MsgCreateStoredFile defines the MsgCreateStoredFile message.
+type MsgCreateStoredFile struct {
+	Creator      string   `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	OriginalHash string   `protobuf:"bytes,2,opt,name=original_hash,json=originalHash,proto3" json:"original_hash,omitempty"`
+	Tag          string   `protobuf:"bytes,3,opt,name=tag,proto3" json:"tag,omitempty"`
+	ShardHashes  []string `protobuf:"bytes,4,rep,name=shard_hashes,json=shardHashes,proto3" json:"shard_hashes,omitempty"`
+}
+
+func (m *MsgCreateStoredFile) Reset()         { *m = MsgCreateStoredFile{} }
+func (m *MsgCreateStoredFile) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateStoredFile) ProtoMessage()    {}
+func (*MsgCreateStoredFile) Descriptor() ([]byte, []int) {
+	return fileDescriptor_013a51d6816dc794, []int{2}
+}
+func (m *MsgCreateStoredFile) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateStoredFile) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateStoredFile.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateStoredFile) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateStoredFile.Merge(m, src)
+}
+func (m *MsgCreateStoredFile) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateStoredFile) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateStoredFile.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateStoredFile proto.InternalMessageInfo
+
+func (m *MsgCreateStoredFile) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateStoredFile) GetOriginalHash() string {
+	if m != nil {
+		return m.OriginalHash
+	}
+	return ""
+}
+
+func (m *MsgCreateStoredFile) GetTag() string {
+	if m != nil {
+		return m.Tag
+	}
+	return ""
+}
+
+func (m *MsgCreateStoredFile) GetShardHashes() []string {
+	if m != nil {
+		return m.ShardHashes
+	}
+	return nil
+}
+
+// MsgCreateStoredFileResponse defines the MsgCreateStoredFileResponse message.
+type MsgCreateStoredFileResponse struct {
+}
+
+func (m *MsgCreateStoredFileResponse) Reset()         { *m = MsgCreateStoredFileResponse{} }
+func (m *MsgCreateStoredFileResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateStoredFileResponse) ProtoMessage()    {}
+func (*MsgCreateStoredFileResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_013a51d6816dc794, []int{3}
+}
+func (m *MsgCreateStoredFileResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateStoredFileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateStoredFileResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateStoredFileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateStoredFileResponse.Merge(m, src)
+}
+func (m *MsgCreateStoredFileResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateStoredFileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateStoredFileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateStoredFileResponse proto.InternalMessageInfo
+
+// MsgUpdateStoredFile defines the MsgUpdateStoredFile message.
+type MsgUpdateStoredFile struct {
+	Creator      string   `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	OriginalHash string   `protobuf:"bytes,2,opt,name=original_hash,json=originalHash,proto3" json:"original_hash,omitempty"`
+	Tag          string   `protobuf:"bytes,3,opt,name=tag,proto3" json:"tag,omitempty"`
+	ShardHashes  []string `protobuf:"bytes,4,rep,name=shard_hashes,json=shardHashes,proto3" json:"shard_hashes,omitempty"`
+}
+
+func (m *MsgUpdateStoredFile) Reset()         { *m = MsgUpdateStoredFile{} }
+func (m *MsgUpdateStoredFile) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateStoredFile) ProtoMessage()    {}
+func (*MsgUpdateStoredFile) Descriptor() ([]byte, []int) {
+	return fileDescriptor_013a51d6816dc794, []int{4}
+}
+func (m *MsgUpdateStoredFile) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateStoredFile) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateStoredFile.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateStoredFile) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateStoredFile.Merge(m, src)
+}
+func (m *MsgUpdateStoredFile) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateStoredFile) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateStoredFile.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateStoredFile proto.InternalMessageInfo
+
+func (m *MsgUpdateStoredFile) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateStoredFile) GetOriginalHash() string {
+	if m != nil {
+		return m.OriginalHash
+	}
+	return ""
+}
+
+func (m *MsgUpdateStoredFile) GetTag() string {
+	if m != nil {
+		return m.Tag
+	}
+	return ""
+}
+
+func (m *MsgUpdateStoredFile) GetShardHashes() []string {
+	if m != nil {
+		return m.ShardHashes
+	}
+	return nil
+}
+
+// MsgUpdateStoredFileResponse defines the MsgUpdateStoredFileResponse message.
+type MsgUpdateStoredFileResponse struct {
+}
+
+func (m *MsgUpdateStoredFileResponse) Reset()         { *m = MsgUpdateStoredFileResponse{} }
+func (m *MsgUpdateStoredFileResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateStoredFileResponse) ProtoMessage()    {}
+func (*MsgUpdateStoredFileResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_013a51d6816dc794, []int{5}
+}
+func (m *MsgUpdateStoredFileResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateStoredFileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateStoredFileResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateStoredFileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateStoredFileResponse.Merge(m, src)
+}
+func (m *MsgUpdateStoredFileResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateStoredFileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateStoredFileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateStoredFileResponse proto.InternalMessageInfo
+
+// MsgDeleteStoredFile defines the MsgDeleteStoredFile message.
+type MsgDeleteStoredFile struct {
+	Creator      string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	OriginalHash string `protobuf:"bytes,2,opt,name=original_hash,json=originalHash,proto3" json:"original_hash,omitempty"`
+}
+
+func (m *MsgDeleteStoredFile) Reset()         { *m = MsgDeleteStoredFile{} }
+func (m *MsgDeleteStoredFile) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteStoredFile) ProtoMessage()    {}
+func (*MsgDeleteStoredFile) Descriptor() ([]byte, []int) {
+	return fileDescriptor_013a51d6816dc794, []int{6}
+}
+func (m *MsgDeleteStoredFile) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteStoredFile) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteStoredFile.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteStoredFile) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteStoredFile.Merge(m, src)
+}
+func (m *MsgDeleteStoredFile) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteStoredFile) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteStoredFile.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteStoredFile proto.InternalMessageInfo
+
+func (m *MsgDeleteStoredFile) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteStoredFile) GetOriginalHash() string {
+	if m != nil {
+		return m.OriginalHash
+	}
+	return ""
+}
+
+// MsgDeleteStoredFileResponse defines the MsgDeleteStoredFileResponse message.
+type MsgDeleteStoredFileResponse struct {
+}
+
+func (m *MsgDeleteStoredFileResponse) Reset()         { *m = MsgDeleteStoredFileResponse{} }
+func (m *MsgDeleteStoredFileResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteStoredFileResponse) ProtoMessage()    {}
+func (*MsgDeleteStoredFileResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_013a51d6816dc794, []int{7}
+}
+func (m *MsgDeleteStoredFileResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteStoredFileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteStoredFileResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteStoredFileResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteStoredFileResponse.Merge(m, src)
+}
+func (m *MsgDeleteStoredFileResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteStoredFileResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteStoredFileResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteStoredFileResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgUpdateParams)(nil), "flstorage.storage.v1.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "flstorage.storage.v1.MsgUpdateParamsResponse")
+	proto.RegisterType((*MsgCreateStoredFile)(nil), "flstorage.storage.v1.MsgCreateStoredFile")
+	proto.RegisterType((*MsgCreateStoredFileResponse)(nil), "flstorage.storage.v1.MsgCreateStoredFileResponse")
+	proto.RegisterType((*MsgUpdateStoredFile)(nil), "flstorage.storage.v1.MsgUpdateStoredFile")
+	proto.RegisterType((*MsgUpdateStoredFileResponse)(nil), "flstorage.storage.v1.MsgUpdateStoredFileResponse")
+	proto.RegisterType((*MsgDeleteStoredFile)(nil), "flstorage.storage.v1.MsgDeleteStoredFile")
+	proto.RegisterType((*MsgDeleteStoredFileResponse)(nil), "flstorage.storage.v1.MsgDeleteStoredFileResponse")
 }
 
 func init() { proto.RegisterFile("flstorage/storage/v1/tx.proto", fileDescriptor_013a51d6816dc794) }
 
 var fileDescriptor_013a51d6816dc794 = []byte{
-	// 324 bytes of a gzipped FileDescriptorProto
+	// 517 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x4d, 0xcb, 0x29, 0x2e,
 	0xc9, 0x2f, 0x4a, 0x4c, 0x4f, 0xd5, 0x87, 0xd1, 0x65, 0x86, 0xfa, 0x25, 0x15, 0x7a, 0x05, 0x45,
 	0xf9, 0x25, 0xf9, 0x42, 0x22, 0x70, 0x69, 0x3d, 0x18, 0x5d, 0x66, 0x28, 0x25, 0x98, 0x98, 0x9b,
 	0x99, 0x97, 0xaf, 0x0f, 0x26, 0x21, 0x0a, 0xa5, 0xc4, 0x93, 0xf3, 0x8b, 0x73, 0xf3, 0x8b, 0xf5,
 	0x73, 0x8b, 0xd3, 0x41, 0x06, 0xe4, 0x16, 0xa7, 0x43, 0x25, 0x24, 0x21, 0x12, 0xf1, 0x60, 0x9e,
-	0x3e, 0x84, 0x03, 0x95, 0x12, 0x49, 0xcf, 0x4f, 0xcf, 0x87, 0x88, 0x83, 0x58, 0x50, 0x51, 0x45,
-	0xac, 0x2e, 0x2a, 0x48, 0x2c, 0x4a, 0xcc, 0x85, 0x6a, 0x54, 0x3a, 0xc4, 0xc8, 0xc5, 0xef, 0x5b,
-	0x9c, 0x1e, 0x5a, 0x90, 0x92, 0x58, 0x92, 0x1a, 0x00, 0x96, 0x11, 0x32, 0xe3, 0xe2, 0x4c, 0x2c,
-	0x2d, 0xc9, 0xc8, 0x2f, 0xca, 0x2c, 0xa9, 0x94, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x74, 0x92, 0xb8,
-	0xb4, 0x45, 0x57, 0x04, 0x6a, 0xa3, 0x63, 0x4a, 0x4a, 0x51, 0x6a, 0x71, 0x71, 0x70, 0x49, 0x51,
-	0x66, 0x5e, 0x7a, 0x10, 0x42, 0xa9, 0x90, 0x3d, 0x17, 0x1b, 0xc4, 0x6c, 0x09, 0x26, 0x05, 0x46,
-	0x0d, 0x6e, 0x23, 0x19, 0x3d, 0x6c, 0x5e, 0xd6, 0x83, 0xd8, 0xe2, 0xc4, 0x79, 0xe2, 0x9e, 0x3c,
-	0xc3, 0x8a, 0xe7, 0x1b, 0xb4, 0x18, 0x83, 0xa0, 0xda, 0xac, 0xcc, 0x9a, 0x9e, 0x6f, 0xd0, 0x42,
-	0x18, 0xd8, 0xf5, 0x7c, 0x83, 0x96, 0x32, 0xc2, 0x0b, 0x15, 0x70, 0x4f, 0xa0, 0x39, 0x58, 0x49,
-	0x92, 0x4b, 0x1c, 0x4d, 0x28, 0x28, 0xb5, 0xb8, 0x20, 0x3f, 0xaf, 0x38, 0xd5, 0xa8, 0x88, 0x8b,
-	0xd9, 0xb7, 0x38, 0x5d, 0x28, 0x85, 0x8b, 0x07, 0xc5, 0x8b, 0xaa, 0xd8, 0x9d, 0x86, 0x66, 0x8a,
-	0x94, 0x2e, 0x51, 0xca, 0x60, 0x96, 0x49, 0xb1, 0x36, 0x80, 0xbc, 0xe3, 0x64, 0x7c, 0xe2, 0x91,
-	0x1c, 0xe3, 0x85, 0x47, 0x72, 0x8c, 0x0f, 0x1e, 0xc9, 0x31, 0x4e, 0x78, 0x2c, 0xc7, 0x70, 0xe1,
-	0xb1, 0x1c, 0xc3, 0x8d, 0xc7, 0x72, 0x0c, 0x51, 0x92, 0xd8, 0x7c, 0x53, 0x52, 0x59, 0x90, 0x5a,
-	0x9c, 0xc4, 0x06, 0x8e, 0x0f, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0x12, 0x03, 0xeb, 0x12,
-	0x46, 0x02, 0x00, 0x00,
+	0x3e, 0x84, 0x03, 0x95, 0x52, 0xc4, 0x6a, 0x77, 0x41, 0x62, 0x51, 0x62, 0x2e, 0x4c, 0x89, 0x48,
+	0x7a, 0x7e, 0x7a, 0x3e, 0x44, 0x2b, 0x88, 0x05, 0x11, 0x55, 0x3a, 0xc4, 0xc8, 0xc5, 0xef, 0x5b,
+	0x9c, 0x1e, 0x5a, 0x90, 0x92, 0x58, 0x92, 0x1a, 0x00, 0x56, 0x2f, 0x64, 0xc6, 0xc5, 0x99, 0x58,
+	0x5a, 0x92, 0x91, 0x5f, 0x94, 0x59, 0x52, 0x29, 0xc1, 0xa8, 0xc0, 0xa8, 0xc1, 0xe9, 0x24, 0x71,
+	0x69, 0x8b, 0xae, 0x08, 0xd4, 0x46, 0xc7, 0x94, 0x94, 0xa2, 0xd4, 0xe2, 0xe2, 0xe0, 0x92, 0xa2,
+	0xcc, 0xbc, 0xf4, 0x20, 0x84, 0x52, 0x21, 0x7b, 0x2e, 0x36, 0x88, 0x8d, 0x12, 0x4c, 0x0a, 0x8c,
+	0x1a, 0xdc, 0x46, 0x32, 0x7a, 0xd8, 0xbc, 0xac, 0x07, 0xb1, 0xc5, 0x89, 0xf3, 0xc4, 0x3d, 0x79,
+	0x86, 0x15, 0xcf, 0x37, 0x68, 0x31, 0x06, 0x41, 0xb5, 0x59, 0x99, 0x35, 0x3d, 0xdf, 0xa0, 0x85,
+	0x30, 0xb0, 0xeb, 0xf9, 0x06, 0x2d, 0x65, 0x84, 0xc7, 0x2a, 0xe0, 0x5e, 0x43, 0x73, 0xb0, 0x92,
+	0x24, 0x97, 0x38, 0x9a, 0x50, 0x50, 0x6a, 0x71, 0x41, 0x7e, 0x5e, 0x71, 0xaa, 0xd2, 0x46, 0x46,
+	0x2e, 0x61, 0xdf, 0xe2, 0x74, 0xe7, 0xa2, 0xd4, 0xc4, 0x92, 0xd4, 0xe0, 0x92, 0xfc, 0xa2, 0xd4,
+	0x14, 0xb7, 0xcc, 0x9c, 0x54, 0x21, 0x23, 0x2e, 0xf6, 0x64, 0x90, 0x58, 0x7e, 0x11, 0x41, 0x1f,
+	0xc2, 0x14, 0x0a, 0x29, 0x73, 0xf1, 0xe6, 0x17, 0x65, 0xa6, 0x67, 0xe6, 0x25, 0xe6, 0xc4, 0x67,
+	0x24, 0x16, 0x67, 0x80, 0xbd, 0xc9, 0x19, 0xc4, 0x03, 0x13, 0xf4, 0x48, 0x2c, 0xce, 0x10, 0x12,
+	0xe0, 0x62, 0x2e, 0x49, 0x4c, 0x97, 0x60, 0x06, 0x4b, 0x81, 0x98, 0x42, 0x8a, 0x5c, 0x3c, 0xc5,
+	0x19, 0x89, 0x45, 0x29, 0x60, 0x3d, 0xa9, 0xc5, 0x12, 0x2c, 0x0a, 0xcc, 0x1a, 0x9c, 0x41, 0xdc,
+	0x60, 0x31, 0x0f, 0xb0, 0x90, 0x15, 0x0f, 0xc8, 0xe3, 0x30, 0x7b, 0x94, 0x64, 0xb9, 0xa4, 0xb1,
+	0x38, 0x19, 0xdd, 0x4b, 0x10, 0xef, 0x0e, 0x29, 0x2f, 0xa1, 0x3b, 0x19, 0xee, 0xa5, 0x1a, 0xb0,
+	0x8f, 0x5c, 0x52, 0x73, 0x52, 0xe9, 0xe2, 0x23, 0xac, 0x8e, 0x43, 0xb7, 0x1d, 0xe6, 0x38, 0xa3,
+	0x13, 0xcc, 0x5c, 0xcc, 0xbe, 0xc5, 0xe9, 0x42, 0x29, 0x5c, 0x3c, 0x28, 0xd9, 0x44, 0x15, 0x7b,
+	0xf2, 0x46, 0x4b, 0x89, 0x52, 0xba, 0x44, 0x29, 0x83, 0xd9, 0x26, 0x54, 0xc0, 0x25, 0x80, 0x91,
+	0x58, 0x35, 0x71, 0x1a, 0x81, 0xae, 0x54, 0xca, 0x90, 0x68, 0xa5, 0xc8, 0x36, 0x62, 0xa4, 0x25,
+	0x4d, 0x02, 0x8e, 0x26, 0xca, 0x46, 0x5c, 0xd1, 0x0d, 0xb2, 0x11, 0x23, 0xae, 0x71, 0xdb, 0x88,
+	0xae, 0x14, 0x8f, 0x8d, 0xb8, 0xe2, 0x50, 0x8a, 0xb5, 0x01, 0x54, 0xd0, 0x38, 0x19, 0x9f, 0x78,
+	0x24, 0xc7, 0x78, 0xe1, 0x91, 0x1c, 0xe3, 0x83, 0x47, 0x72, 0x8c, 0x13, 0x1e, 0xcb, 0x31, 0x5c,
+	0x78, 0x2c, 0xc7, 0x70, 0xe3, 0xb1, 0x1c, 0x43, 0x94, 0x24, 0xb6, 0x72, 0xa6, 0xa4, 0xb2, 0x20,
+	0xb5, 0x38, 0x89, 0x0d, 0x5c, 0x52, 0x1a, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0x8e, 0x23, 0x32,
+	0x8c, 0xe0, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -174,6 +492,12 @@ type MsgClient interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
+	// CreateStoredFile defines the CreateStoredFile RPC.
+	CreateStoredFile(ctx context.Context, in *MsgCreateStoredFile, opts ...grpc.CallOption) (*MsgCreateStoredFileResponse, error)
+	// UpdateStoredFile defines the UpdateStoredFile RPC.
+	UpdateStoredFile(ctx context.Context, in *MsgUpdateStoredFile, opts ...grpc.CallOption) (*MsgUpdateStoredFileResponse, error)
+	// DeleteStoredFile defines the DeleteStoredFile RPC.
+	DeleteStoredFile(ctx context.Context, in *MsgDeleteStoredFile, opts ...grpc.CallOption) (*MsgDeleteStoredFileResponse, error)
 }
 
 type msgClient struct {
@@ -193,11 +517,44 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 	return out, nil
 }
 
+func (c *msgClient) CreateStoredFile(ctx context.Context, in *MsgCreateStoredFile, opts ...grpc.CallOption) (*MsgCreateStoredFileResponse, error) {
+	out := new(MsgCreateStoredFileResponse)
+	err := c.cc.Invoke(ctx, "/flstorage.storage.v1.Msg/CreateStoredFile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateStoredFile(ctx context.Context, in *MsgUpdateStoredFile, opts ...grpc.CallOption) (*MsgUpdateStoredFileResponse, error) {
+	out := new(MsgUpdateStoredFileResponse)
+	err := c.cc.Invoke(ctx, "/flstorage.storage.v1.Msg/UpdateStoredFile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteStoredFile(ctx context.Context, in *MsgDeleteStoredFile, opts ...grpc.CallOption) (*MsgDeleteStoredFileResponse, error) {
+	out := new(MsgDeleteStoredFileResponse)
+	err := c.cc.Invoke(ctx, "/flstorage.storage.v1.Msg/DeleteStoredFile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
+	// CreateStoredFile defines the CreateStoredFile RPC.
+	CreateStoredFile(context.Context, *MsgCreateStoredFile) (*MsgCreateStoredFileResponse, error)
+	// UpdateStoredFile defines the UpdateStoredFile RPC.
+	UpdateStoredFile(context.Context, *MsgUpdateStoredFile) (*MsgUpdateStoredFileResponse, error)
+	// DeleteStoredFile defines the DeleteStoredFile RPC.
+	DeleteStoredFile(context.Context, *MsgDeleteStoredFile) (*MsgDeleteStoredFileResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -206,6 +563,15 @@ type UnimplementedMsgServer struct {
 
 func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
+}
+func (*UnimplementedMsgServer) CreateStoredFile(ctx context.Context, req *MsgCreateStoredFile) (*MsgCreateStoredFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateStoredFile not implemented")
+}
+func (*UnimplementedMsgServer) UpdateStoredFile(ctx context.Context, req *MsgUpdateStoredFile) (*MsgUpdateStoredFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStoredFile not implemented")
+}
+func (*UnimplementedMsgServer) DeleteStoredFile(ctx context.Context, req *MsgDeleteStoredFile) (*MsgDeleteStoredFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteStoredFile not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -230,6 +596,60 @@ func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CreateStoredFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateStoredFile)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateStoredFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flstorage.storage.v1.Msg/CreateStoredFile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateStoredFile(ctx, req.(*MsgCreateStoredFile))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateStoredFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateStoredFile)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateStoredFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flstorage.storage.v1.Msg/UpdateStoredFile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateStoredFile(ctx, req.(*MsgUpdateStoredFile))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteStoredFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteStoredFile)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteStoredFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/flstorage.storage.v1.Msg/DeleteStoredFile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteStoredFile(ctx, req.(*MsgDeleteStoredFile))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var Msg_serviceDesc = _Msg_serviceDesc
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "flstorage.storage.v1.Msg",
@@ -238,6 +658,18 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateParams",
 			Handler:    _Msg_UpdateParams_Handler,
+		},
+		{
+			MethodName: "CreateStoredFile",
+			Handler:    _Msg_CreateStoredFile_Handler,
+		},
+		{
+			MethodName: "UpdateStoredFile",
+			Handler:    _Msg_UpdateStoredFile_Handler,
+		},
+		{
+			MethodName: "DeleteStoredFile",
+			Handler:    _Msg_DeleteStoredFile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -307,6 +739,218 @@ func (m *MsgUpdateParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgCreateStoredFile) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateStoredFile) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateStoredFile) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.ShardHashes) > 0 {
+		for iNdEx := len(m.ShardHashes) - 1; iNdEx >= 0; iNdEx-- {
+			i -= len(m.ShardHashes[iNdEx])
+			copy(dAtA[i:], m.ShardHashes[iNdEx])
+			i = encodeVarintTx(dAtA, i, uint64(len(m.ShardHashes[iNdEx])))
+			i--
+			dAtA[i] = 0x22
+		}
+	}
+	if len(m.Tag) > 0 {
+		i -= len(m.Tag)
+		copy(dAtA[i:], m.Tag)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Tag)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.OriginalHash) > 0 {
+		i -= len(m.OriginalHash)
+		copy(dAtA[i:], m.OriginalHash)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.OriginalHash)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateStoredFileResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateStoredFileResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateStoredFileResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateStoredFile) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateStoredFile) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateStoredFile) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.ShardHashes) > 0 {
+		for iNdEx := len(m.ShardHashes) - 1; iNdEx >= 0; iNdEx-- {
+			i -= len(m.ShardHashes[iNdEx])
+			copy(dAtA[i:], m.ShardHashes[iNdEx])
+			i = encodeVarintTx(dAtA, i, uint64(len(m.ShardHashes[iNdEx])))
+			i--
+			dAtA[i] = 0x22
+		}
+	}
+	if len(m.Tag) > 0 {
+		i -= len(m.Tag)
+		copy(dAtA[i:], m.Tag)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Tag)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.OriginalHash) > 0 {
+		i -= len(m.OriginalHash)
+		copy(dAtA[i:], m.OriginalHash)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.OriginalHash)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateStoredFileResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateStoredFileResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateStoredFileResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteStoredFile) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteStoredFile) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteStoredFile) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.OriginalHash) > 0 {
+		i -= len(m.OriginalHash)
+		copy(dAtA[i:], m.OriginalHash)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.OriginalHash)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteStoredFileResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteStoredFileResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteStoredFileResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -334,6 +978,104 @@ func (m *MsgUpdateParams) Size() (n int) {
 }
 
 func (m *MsgUpdateParamsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCreateStoredFile) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.OriginalHash)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Tag)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if len(m.ShardHashes) > 0 {
+		for _, s := range m.ShardHashes {
+			l = len(s)
+			n += 1 + l + sovTx(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *MsgCreateStoredFileResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateStoredFile) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.OriginalHash)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Tag)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if len(m.ShardHashes) > 0 {
+		for _, s := range m.ShardHashes {
+			l = len(s)
+			n += 1 + l + sovTx(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *MsgUpdateStoredFileResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteStoredFile) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.OriginalHash)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgDeleteStoredFileResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -490,6 +1232,626 @@ func (m *MsgUpdateParamsResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgUpdateParamsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateStoredFile) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateStoredFile: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateStoredFile: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field OriginalHash", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.OriginalHash = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Tag", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Tag = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ShardHashes", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ShardHashes = append(m.ShardHashes, string(dAtA[iNdEx:postIndex]))
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateStoredFileResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateStoredFileResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateStoredFileResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateStoredFile) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateStoredFile: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateStoredFile: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field OriginalHash", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.OriginalHash = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Tag", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Tag = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ShardHashes", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ShardHashes = append(m.ShardHashes, string(dAtA[iNdEx:postIndex]))
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateStoredFileResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateStoredFileResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateStoredFileResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteStoredFile) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteStoredFile: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteStoredFile: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field OriginalHash", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.OriginalHash = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteStoredFileResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteStoredFileResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteStoredFileResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
