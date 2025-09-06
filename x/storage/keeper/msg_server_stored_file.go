@@ -4,6 +4,8 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"crypto/sha256"
+	"encoding/hex"
 
 	"flstorage/x/storage/types"
 
@@ -13,16 +15,23 @@ import (
 )
 
 func (k msgServer) CreateStoredFile(ctx context.Context, msg *types.MsgCreateStoredFile) (*types.MsgCreateStoredFileResponse, error) {
-	if _, err := k.addressCodec.StringToBytes(msg.Creator); err != nil {
-		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidAddress, fmt.Sprintf("invalid address: %s", err))
+	// --- 1. 우리의 커스텀 검증 로직을 먼저 추가합니다. ---
+	_, err := hex.DecodeString(msg.OriginalHash)
+	if err != nil || len(msg.OriginalHash) != sha256.Size*2 {
+		// 우리가 types/errors.go에 정의한 커스텀 에러를 사용합니다.
+		return nil, errorsmod.Wrapf(types.ErrInvalidOriginalHash, "해시: %s", msg.OriginalHash)
 	}
 
-	// Check if the value already exists
+	// --- 2. Ignite가 생성한 'collections'를 사용하여 중복을 확인합니다. ---
+	// k.HasStoredFile(ctx, ...) 대신 k.StoredFile.Has(ctx, ...)를 사용합니다.
 	ok, err := k.StoredFile.Has(ctx, msg.OriginalHash)
 	if err != nil {
-		return nil, errorsmod.Wrap(sdkerrors.ErrLogic, err.Error())
-	} else if ok {
-		return nil, errorsmod.Wrap(sdkerrors.ErrInvalidRequest, "index already set")
+		// collections가 반환하는 에러를 그대로 래핑합니다.
+		return nil, err
+	}
+	if ok {
+		// 우리가 정의한 커스텀 에러를 사용합니다.
+		return nil, errorsmod.Wrapf(types.ErrFileAlreadyExists, "해시: %s", msg.OriginalHash)
 	}
 
 	var storedFile = types.StoredFile{
@@ -32,8 +41,10 @@ func (k msgServer) CreateStoredFile(ctx context.Context, msg *types.MsgCreateSto
 		ShardHashes:  msg.ShardHashes,
 	}
 
+	// --- 3. 'collections'를 사용하여 데이터를 저장합니다. ---
+	// k.SetStoredFile(ctx, ...) 대신 k.StoredFile.Set(ctx, ...)를 사용합니다.
 	if err := k.StoredFile.Set(ctx, storedFile.OriginalHash, storedFile); err != nil {
-		return nil, errorsmod.Wrap(sdkerrors.ErrLogic, err.Error())
+		return nil, err
 	}
 
 	return &types.MsgCreateStoredFileResponse{}, nil
