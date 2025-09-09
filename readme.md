@@ -6,6 +6,14 @@
 ```
 ignite chain serve
 
+계정 및 키 확인
+flstoraged keys list
+
+업로드 확인된 alice 키 삽입
+go run main.go ../model_round_1_client_1.bin "1-fls15rsyck2hfrxhkl0cqzkq7ywsh5jt366fjl2604-flstorage" fls15rsyck2hfrxhkl0cqzkq7ywsh5jt366fjl2604
+
+결과의 originalHash를 통해 query 
+flstoraged query storage show-stored-file 17afd56451d6b5b3a2151b0de0e25b5c32412c975117874e2a346bd3202ab67b
 ```
 
 `serve` command installs dependencies, builds, initializes, and starts your blockchain in development.
