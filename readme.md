@@ -9,7 +9,7 @@ ignite chain serve
 계정 및 키 확인
 flstoraged keys list
 
-업로드 확인된 alice 키 삽입
+업로드 확인된 alice 키 삽입 [fls-client - uploader]
 go run main.go ../model_round_1_client_1.bin "1-[aliceAddr]-flstorage" [aliceAddr]
 
 결과의 originalHash를 통해 query 
@@ -21,7 +21,7 @@ flstoraged query tx [txHash]
 block height를 통한 블록 확인
 flstoraged query block --type=height 30248
 
-downloader를 통해 originalHash를 인자로 복원
+downloader를 통해 originalHash를 인자로 복원 [fls-client - downloader]
 go run main.go [originalHash] ../restored_round_weight.bin
 
 checksum 비교를 통해 복원 확인
