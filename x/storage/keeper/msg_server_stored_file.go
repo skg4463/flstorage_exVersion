@@ -42,7 +42,7 @@ func (k msgServer) CreateStoredFile(ctx context.Context, msg *types.MsgCreateSto
 	}
 
 	// --- 3. 'collections'를 사용하여 데이터 저장 ---
-	// k.SetStoredFile(ctx, ...) 대신 k.StoredFile.Set(ctx, ...)를 사용합니다.
+	// k.SetStoredFile(ctx, ...) 대신 k.StoredFile.Set(ctx, ...)를 사용
 	if err := k.StoredFile.Set(ctx, storedFile.OriginalHash, storedFile); err != nil {
 		return nil, err
 	}
