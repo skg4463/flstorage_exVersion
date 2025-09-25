@@ -42,6 +42,12 @@ sha256sum model_round_1_client_1.bin restored_round_weight.bin
 
 `serve` command installs dependencies, builds, initializes, and starts your blockchain in development.
 
+Port info: 
+    tendermint node(RPC): 26658
+    blockchain API: 1318
+    token faucet 4501
+    gPRC: 9091
+
 ### Configure
 
 Your blockchain in development can be configured with `config.yml`. To learn more, see the [Ignite CLI docs](https://docs.ignite.com).
