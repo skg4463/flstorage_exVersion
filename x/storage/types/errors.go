@@ -3,13 +3,15 @@ package types
 // DONTCOVER
 
 import (
-	"cosmossdk.io/errors"
+	errorsmod "cosmossdk.io/errors"
 )
 
 // x/storage module sentinel errors
 var (
-	ErrInvalidSigner = errors.Register(ModuleName, 1100, "expected gov account as only signer for proposal message")
-	// --- 아래 두 줄 추가 ---
-	ErrInvalidOriginalHash = errors.Register(ModuleName, 1101, "invalid original hash")
-	ErrFileAlreadyExists   = errors.Register(ModuleName, 1102, "file with this hash already exists")
+	ErrInvalidSigner        = errorsmod.Register(ModuleName, 1100, "expected gov account as only signer for proposal message")
+	ErrInvalidOriginalHash  = errorsmod.Register(ModuleName, 1101, "invalid original hash")
+	ErrFileAlreadyExists    = errorsmod.Register(ModuleName, 1102, "file with this hash already exists")
+	ErrInvalidPacketTimeout = errorsmod.Register(ModuleName, 1500, "invalid packet timeout")
+	ErrInvalidVersion       = errorsmod.Register(ModuleName, 1501, "invalid version")
+	ErrInvalidChannelFlow   = errorsmod.Register(ModuleName, 1502, "invalid channel flow")
 )
